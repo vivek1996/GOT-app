@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GotService } from '../got.service';
+import orderBy from 'lodash/orderBy';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
       data => {
         console.log(data);
         console.log('success in req');
-        this.allBooks = data;
+        this.allBooks = orderBy(data, ['name'], ['asc']);
       },
       error => {
         console.log('error in request', error);
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
     );
     this.gotService.getAllCharacters().subscribe(
       data => {
-        this.allCharaters = data;
+        this.allCharaters = orderBy(data, ['liases'], ['asc']);
         console.log(this.allCharaters);
       },
       error => {
@@ -33,12 +34,17 @@ export class HomeComponent implements OnInit {
     );
     this.gotService.getAllHouses().subscribe(
       data => {
-        this.allHouses = data;
+        this.allHouses = orderBy(data, ['name'], ['asc']);
         console.log(this.allHouses);
       },
       error => {
         console.log(error);
       }
     );
+  }
+  public sortBook(event): void {
+    const val = event.target.value;
+    console.log(val);
+    this.allBooks =  orderBy(this.allBooks, [val], ['asc']);
   }
 }

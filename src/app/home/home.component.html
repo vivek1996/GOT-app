@@ -4,13 +4,90 @@
     <div class="mask rgba-black-light flex-center">
       <div class="container text-center white-text">
         <div class="white-text text-center wow fadeInUp">
-          <h2>This Navbar is fixed</h2>
-          <h5>It will always stay visible on the top, even when you scroll down</h5>
-          <br>
-          <p>Full page intro with background image will be always displayed in full screen mode, regardless of device </p>
+          <h2 class=" blue-text font-weight-bold">Game Of Thrones</h2>
+          <h5 class="red-text m-4 font-weight-bold">Scroll Down</h5>
+          <i class="fa fa-angle-double-down fa-5x animated bounce infinite blue-text" aria-hidden="true"></i>
         </div>
       </div>
     </div>
   </div>
 </div>
 <!-- /.Main -->
+<!-- display info -->
+<div class=" container-fluid">
+  <div class=" row">
+    <!-- Books -->
+    <div class=" col-md-4">
+      <div class="white-text wow fadeInUp">
+        <h2 class=" text-center red-text m-2 font-weight-bold" *ngIf="allBooks">All Books</h2>
+        <div class="row">
+          <div class="col ">
+            <label>Sort By : </label>
+            <div class="select"><select (change)="sortBook($event)">
+                <option value="name">Book Name</option>
+                <option value="publisher">Publisher</option>
+              </select>
+              <div class="select_arrow">
+                </div></div>
+
+          </div>
+         </div>
+        <div class="card border-danger m-3 wow fadeInUp" *ngFor="let book of allBooks">
+          <div class="card-body">
+            <h4 class="card-title red-text"> {{book.name}} </h4>
+            <div class="card-text">
+              <h6 *ngFor="let author of book.authors">
+                <i class="fa fa-user" aria-hidden="true"></i> Author : {{author}}</h6>
+              <p>
+                <i class="fa fa-book" aria-hidden="true"></i> Publisher : {{book.publisher}}</p>
+              <p>
+                <i class="fa fa-book" aria-hidden="true"></i> ISBN : {{book.isbn}} </p>
+              <p>
+                <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Released On : {{book.released | date}} </p>
+            </div>
+            <a class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /books -->
+    <!-- characters -->
+    <div class=" col-md-4">
+      <div class="white-text wow fadeInUp">
+        <h2 class=" text-center blue-text m-2 font-weight-bold" *ngIf="allCharaters">All Characters</h2>
+        <div class="card border-primary m-3 wow fadeInUp" *ngFor="let charater of allCharaters">
+          <div class="card-body">
+            <h4 class="card-title blue-text" *ngIf="charater.name"> {{charater.name}} </h4>
+            <h5 class="black-text">Aliases :
+              <span class="blue-text">{{charater.aliases}}</span>
+            </h5>
+            <div class="card-text">
+              <p>
+                <i class="fa " [ngClass]="charater.gender == 'Male' ? 'fa-male' : 'fa-female'" aria-hidden="true"></i> Gender : {{charater.gender}}</p>
+              <p *ngIf="charater.culture">Culture : {{charater.culture}} </p>
+            </div>
+            <a class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /charaters -->
+    <!-- Houses -->
+    <div class=" col-md-4">
+      <div class="white-text wow fadeInUp">
+        <h2 class=" text-center green-text m-2 font-weight-bold" *ngIf="allHouses">All Houses</h2>
+        <div class="card border-success m-3 wow fadeInUp" *ngFor="let house of allHouses">
+          <div class="card-body">
+            <h4 class="card-title green-text"> {{house.name}} </h4>
+            <h5 class="grey-text darken-4">Region : {{house.region}} </h5>
+            <div class="card-text">
+              <p class="text-truncate" *ngIf="house.coatOfArms">Coat Of Arms : {{house.coatOfArms}}</p>
+            </div>
+            <a class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Houses -->
+  </div>
+</div>
