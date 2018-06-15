@@ -22,13 +22,15 @@
         <h2 class=" text-center red-text m-2 font-weight-bold" *ngIf="allBooks">All Books</h2>
         <div class="row">
           <div class="col ">
-            <label>Sort By : </label>
-            <div class="select">
-              <select (change)="sortBook($event)">
-                <option value="name">Book Name</option>
-                <option value="publisher">Publisher</option>
-              </select>
-              <div class="select_arrow">
+            <div class="container">
+              <label>Sort By : </label>
+              <div class="select">
+                <select (change)="sortBook($event)">
+                  <option value="name">Book Name</option>
+                  <option value="publisher">Publisher</option>
+                </select>
+                <div class="select_arrow">
+                </div>
               </div>
             </div>
           </div>
@@ -56,6 +58,21 @@
     <div class=" col-md-4">
       <div class="white-text wow fadeInUp">
         <h2 class=" text-center blue-text m-2 font-weight-bold" *ngIf="allCharaters">All Characters</h2>
+        <div class="row">
+          <div class="col ">
+            <div class="container">
+              <label>Sort By : </label>
+              <div class="select">
+                <select (change)="sortCharacter($event)">
+                  <option value="aliases">Aliases Name</option>
+                  <option value="gender">Gender</option>
+                </select>
+                <div class="select_arrow">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="card border-primary m-3 wow fadeInUp" *ngFor="let charater of allCharaters">
           <div class="card-body">
             <h4 class="card-title blue-text" *ngIf="charater.name"> {{charater.name}} </h4>
@@ -77,6 +94,21 @@
     <div class=" col-md-4">
       <div class="white-text wow fadeInUp">
         <h2 class=" text-center green-text m-2 font-weight-bold" *ngIf="allHouses">All Houses</h2>
+        <div class="row">
+          <div class="col ">
+            <div class="container">
+              <label>Sort By : </label>
+              <div class="select">
+                <select (change)="sortHouse($event)">
+                  <option value="name">House Name</option>
+                  <option value="region">Region</option>
+                </select>
+                <div class="select_arrow">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="card border-success m-3 wow fadeInUp" *ngFor="let house of allHouses">
           <div class="card-body">
             <h4 class="card-title green-text"> {{house.name}} </h4>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GotService } from '../got.service';
 // import orderBy from 'lodash/orderBy';
 import * as _ from 'lodash';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   public allBooks = [];
   public allCharaters;
   public allHouses;
-  constructor(private gotService: GotService) {}
+  constructor(private gotService: GotService, private toastr: ToastrService) {}
   ngOnInit() {
     this.gotService.getAllBooks().subscribe(
       data => {
@@ -45,7 +45,17 @@ export class HomeComponent implements OnInit {
   }
   public sortBook(event): void {
     const val = event.target.value;
-    console.log(val);
     this.allBooks =  _.orderBy(this.allBooks, [val], ['asc']);
+    this.toastr.success(`Sorted Successfully by ${val}`, 'Sorted');
+  }
+  public sortCharacter(event): void {
+    const val = event.target.value;
+    this.allCharaters =  _.orderBy(this.allCharaters, [val], ['asc']);
+    this.toastr.success(`Sorted Successfully by ${val}`, 'Sorted');
+  }
+  public sortHouse(event): void {
+    const val = event.target.value;
+    this.allHouses =  _.orderBy(this.allHouses, [val], ['asc']);
+    this.toastr.success(`Sorted Successfully by ${val}`, 'Sorted');
   }
 }
