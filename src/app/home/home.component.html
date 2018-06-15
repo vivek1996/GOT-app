@@ -23,15 +23,16 @@
         <div class="row">
           <div class="col ">
             <label>Sort By : </label>
-            <div class="select"><select (change)="sortBook($event)">
+            <div class="select">
+              <select (change)="sortBook($event)">
                 <option value="name">Book Name</option>
                 <option value="publisher">Publisher</option>
               </select>
               <div class="select_arrow">
-                </div></div>
-
+              </div>
+            </div>
           </div>
-         </div>
+        </div>
         <div class="card border-danger m-3 wow fadeInUp" *ngFor="let book of allBooks">
           <div class="card-body">
             <h4 class="card-title red-text"> {{book.name}} </h4>
