@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+$black: #191923;
+$dark-grey: #2e3446;
+$light-grey: #7a7f81;
+$pink: #f73859;
+body {
+  background: url('./assets/trianglify.svg');
+  background-size: cover;
+  color: $light-grey;
+}
