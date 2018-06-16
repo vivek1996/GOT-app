@@ -11,8 +11,11 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { BookViewComponent } from './book-view/book-view.component';
+import { HouseViewComponent } from './house-view/house-view.component';
+import { CharaterViewComponent } from './charater-view/charater-view.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent, BookViewComponent, HouseViewComponent, CharaterViewComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

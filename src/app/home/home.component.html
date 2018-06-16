@@ -17,15 +17,16 @@
 <div class=" container-fluid">
   <div class=" row">
     <!-- Books -->
-    <div class=" col-md-4">
+    <div class=" col-md-4" *ngIf="allBooks">
       <div class="white-text wow fadeInUp">
-        <h2 class=" text-center red-text m-2 font-weight-bold" *ngIf="allBooks">All Books</h2>
+        <h2 class=" text-center red-text m-2 font-weight-bold">All Books</h2>
         <div class="row">
           <div class="col ">
             <div class="container">
               <label>Sort By : </label>
               <div class="select">
                 <select (change)="sortBook($event)">
+                  <option class="disabled" disabled>-----Select Your Option-----</option>
                   <option value="name">Book Name</option>
                   <option value="publisher">Publisher</option>
                 </select>
@@ -48,22 +49,23 @@
               <p>
                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Released On : {{book.released | date}} </p>
             </div>
-            <a class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
+            <a [routerLink]="['/books',book.url.split('/').pop()]" class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
           </div>
         </div>
       </div>
     </div>
     <!-- /books -->
     <!-- characters -->
-    <div class=" col-md-4">
+    <div class=" col-md-4" *ngIf="allCharacters">
       <div class="white-text wow fadeInUp">
-        <h2 class=" text-center blue-text m-2 font-weight-bold" *ngIf="allCharaters">All Characters</h2>
+        <h2 class=" text-center blue-text m-2 font-weight-bold">All Characters</h2>
         <div class="row">
           <div class="col ">
             <div class="container">
               <label>Sort By : </label>
               <div class="select">
                 <select (change)="sortCharacter($event)">
+                  <option class="disabled" disabled>-----Select Your Option-----</option>
                   <option value="aliases">Aliases Name</option>
                   <option value="gender">Gender</option>
                 </select>
@@ -73,33 +75,34 @@
             </div>
           </div>
         </div>
-        <div class="card border-primary m-3 wow fadeInUp" *ngFor="let charater of allCharaters">
+        <div class="card border-primary m-3 wow fadeInUp" *ngFor="let character of allCharacters">
           <div class="card-body">
-            <h4 class="card-title blue-text" *ngIf="charater.name"> {{charater.name}} </h4>
+            <h4 class="card-title blue-text" *ngIf="character.name"> {{character.name}} </h4>
             <h5 class="black-text">Aliases :
-              <span class="blue-text">{{charater.aliases}}</span>
+              <span class="blue-text">{{character.aliases}}</span>
             </h5>
             <div class="card-text">
               <p>
-                <i class="fa " [ngClass]="charater.gender == 'Male' ? 'fa-male' : 'fa-female'" aria-hidden="true"></i> Gender : {{charater.gender}}</p>
-              <p *ngIf="charater.culture">Culture : {{charater.culture}} </p>
+                <i class="fa " [ngClass]="character.gender == 'Male' ? 'fa-male' : 'fa-female'" aria-hidden="true"></i> Gender : {{character.gender}}</p>
+              <p *ngIf="character.culture">Culture : {{character.culture}} </p>
             </div>
-            <a class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
+            <a [routerLink]="['/characters',character.url.split('/').pop()]" class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
           </div>
         </div>
       </div>
     </div>
-    <!-- /charaters -->
+    <!-- /characters -->
     <!-- Houses -->
-    <div class=" col-md-4">
+    <div class=" col-md-4" *ngIf="allHouses">
       <div class="white-text wow fadeInUp">
-        <h2 class=" text-center green-text m-2 font-weight-bold" *ngIf="allHouses">All Houses</h2>
+        <h2 class=" text-center green-text m-2 font-weight-bold">All Houses</h2>
         <div class="row">
           <div class="col ">
             <div class="container">
               <label>Sort By : </label>
               <div class="select">
                 <select (change)="sortHouse($event)">
+                  <option class="disabled" disabled>-----Select Your Option-----</option>
                   <option value="name">House Name</option>
                   <option value="region">Region</option>
                 </select>
@@ -116,7 +119,7 @@
             <div class="card-text">
               <p class="text-truncate" *ngIf="house.coatOfArms">Coat Of Arms : {{house.coatOfArms}}</p>
             </div>
-            <a class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
+            <a [routerLink]="['/houses',house.url.split('/').pop()]" class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
           </div>
         </div>
       </div>

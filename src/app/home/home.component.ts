@@ -9,15 +9,15 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public allBooks = [];
-  public allCharaters;
+  public allBooks;
+  public allCharacters;
   public allHouses;
   constructor(private gotService: GotService, private toastr: ToastrService) {}
   ngOnInit() {
     this.gotService.getAllBooks().subscribe(
       data => {
-        console.log(data);
-        console.log('success in req');
+        // console.log(data);
+        // console.log('success in req');
         this.allBooks = data;
       },
       error => {
@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
     );
     this.gotService.getAllCharacters().subscribe(
       data => {
-        this.allCharaters = data;
-        console.log(this.allCharaters);
+        this.allCharacters = data;
+        // console.log(this.allCharacters);
       },
       error => {
         console.log('error ', error);
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     this.gotService.getAllHouses().subscribe(
       data => {
         this.allHouses = data;
-        console.log(this.allHouses);
+        // console.log(this.allHouses);
       },
       error => {
         console.log(error);
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
   }
   public sortCharacter(event): void {
     const val = event.target.value;
-    this.allCharaters =  _.orderBy(this.allCharaters, [val], ['asc']);
+    this.allCharacters =  _.orderBy(this.allCharacters, [val], ['asc']);
     this.toastr.success(`Sorted Successfully by ${val}`, 'Sorted');
   }
   public sortHouse(event): void {
