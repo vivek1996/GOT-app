@@ -18,14 +18,24 @@
                         </ul>
                     </div>
                     <hr>
-                    <p class="h5">Characters :</p>
+                    <p class="h5 indigo-text">Characters :</p>
                     <small>Click on a Character to view about that Character</small>
                     <ul class="list-inline">
                         <li class="list-inline-item" *ngFor="let character of book.characters">
                             <!-- <a (click)="goToPage(character.split('/').pop())">Character : {{ character.split('/').pop() }} |</a> -->
-                            <a [routerLink]="['../../characters', character.split('/').pop()]">Character : {{ character.split('/').pop() }} |</a>
+                            <a class="light-blue-text" [routerLink]="['../../characters', character.split('/').pop()]">Character : {{ character.split('/').pop() }} |</a>
                         </li>
                     </ul>
+                    <hr class=" mce-divider">
+                    <p class="h5 deep-purple-text">Point Of View Characters :</p>
+                    <small>Click on a Character to view about that Character</small>
+                    <ul class="list-inline">
+                        <li class="list-inline-item" *ngFor="let character of book.povCharacters">
+                            <a class="blue-grey-text" [routerLink]="['../../characters', character.split('/').pop()]">Character : {{ character.split('/').pop() }} |</a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <button type="button" class="btn btn-danger btn-rounded waves-light" (click)="goBackToPreviousPage()" mdbWavesEffect>Go Back</button>
                 </div>
             </div>
         </div>
