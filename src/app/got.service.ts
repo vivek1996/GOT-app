@@ -19,4 +19,16 @@ export class GotService {
     const respone = this._http.get(`${this.baseUrl}characters`);
     return respone;
   }
+  getSingleBook(bookId): any {
+    const respone = this._http.get(`${this.baseUrl}books/${bookId}`);
+    return respone;
+  }
+  getSingleCharacter(characterId): any {
+    const respone = this._http.get(`${this.baseUrl}characters/${characterId}`);
+    return respone;
+  }
+  getSingleHouse(houseId): any {
+    const respone = this._http.get(`${this.baseUrl}houses/${houseId}`);
+    return respone;
+  }
 }
