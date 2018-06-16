@@ -49,7 +49,7 @@
               <p>
                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Released On : {{book.released | date}} </p>
             </div>
-            <a [routerLink]="['/books',book.url.split('/').pop()]" class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
+            <a [routerLink]="['/books',book.url.split('/').pop()]" class="btn purple-gradient btn-rounded waves-light" mdbWavesEffect>Read More</a>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
                 <i class="fa " [ngClass]="character.gender == 'Male' ? 'fa-male' : 'fa-female'" aria-hidden="true"></i> Gender : {{character.gender}}</p>
               <p *ngIf="character.culture">Culture : {{character.culture}} </p>
             </div>
-            <a [routerLink]="['/characters',character.url.split('/').pop()]" class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
+            <a [routerLink]="['/characters',character.url.split('/').pop()]" class="btn purple-gradient btn-rounded waves-light" mdbWavesEffect>Read More</a>
           </div>
         </div>
       </div>
@@ -119,7 +119,7 @@
             <div class="card-text">
               <p class="text-truncate" *ngIf="house.coatOfArms">Coat Of Arms : {{house.coatOfArms}}</p>
             </div>
-            <a [routerLink]="['/houses',house.url.split('/').pop()]" class="btn btn-secondary waves-light" mdbWavesEffect>Read More</a>
+            <a [routerLink]="['/houses',house.url.split('/').pop()]" class="btn purple-gradient btn-rounded waves-light" mdbWavesEffect>Read More</a>
           </div>
         </div>
       </div>

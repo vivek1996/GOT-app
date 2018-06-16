@@ -19,7 +19,7 @@ export class CharaterViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._http.getSingleBook(this.characterId).subscribe(
+    this._http.getSingleCharacter(this.characterId).subscribe(
       data => {
         this.character = data;
       },

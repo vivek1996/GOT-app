@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GotService } from '../got.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 @Component({
   selector: 'app-book-view',
@@ -13,6 +13,7 @@ export class BookViewComponent implements OnInit {
   constructor(
     private _http: GotService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
   ) {
     this.bookId = this.route.snapshot.paramMap.get('bookId');

@@ -17,7 +17,7 @@ export class HouseViewComponent implements OnInit {
     }
 
   ngOnInit() {
-    this._http.getSingleBook(this.houseId).subscribe(
+    this._http.getSingleHouse(this.houseId).subscribe(
       data => {
         this.house = data;
       },
