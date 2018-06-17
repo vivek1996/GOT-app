@@ -11,6 +11,7 @@
                         <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Born : {{character.born}} </p>
                     <p *ngIf="character.died">
                         <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Died : {{character.died}} </p>
+                    <p *ngIf="character.playedBy[0]">Played By : {{character.playedBy}}</p>
                 </div>
                 <div class="card-body">
                     <div class="card-text">
@@ -20,7 +21,7 @@
                                 <li class="list-group-item" *ngFor="let title of character.titles"> {{title}} </li>
                             </ul>
                         </div>
-                        <div *ngIf="character.aliases[0]" class="m-2">
+                        <div *ngIf="character.aliases[0]" class="m-3">
                             <h5 class="h5">Aliases :</h5>
                             <ul class="list-group">
                                 <li class="list-group-item" *ngFor="let aliase of character.aliases"> {{aliase}} </li>
@@ -49,30 +50,36 @@
                         <div>
                             <ul class="list-inline m-3" *ngIf="character.books[0]">
                                 <h5 class="h5 ">Books : </h5>
-                                <li class="list-inline-item" *ngFor="let book of character.books">
-                                    <a [routerLink]="['../../books', book.split('/').pop()]">Book {{ book.split('/').pop() }} | </a>
+                                <li class="list-inline-item" *ngFor="let book of character.books;let first=first;let last=last">
+                                    <a [routerLink]="['../../books', book.split('/').pop()]">Book {{ book.split('/').pop() }} {{last ? '' : ' | '}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="list-inline m-3" *ngIf="character.povBooks[0]">
+                                <h5 class="h5 ">POV Books : </h5>
+                                <li class="list-inline-item" *ngFor="let book of character.povBooks;let first=first;let last=last">
+                                    <a [routerLink]="['../../books', book.split('/').pop()]">Book {{ book.split('/').pop() }} {{last ? '' : ' | '}} </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr class=" mce-divider">
+                        <div>
+                            <ul class="list-inline m-3" *ngIf="character.tvSeries[0]">
+                                <h5 class="h5 ">TV Series : </h5>
+                                <li class="list-inline-item" *ngFor="let tvSeries of character.tvSeries;let first=first;let last=last">
+                                    {{tvSeries}} {{last ? '' : ' | '}}
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <hr>
-                    <div *ngIf='character'>
-                        <p class="h5 indigo-text">Characters :</p>
-                        <small>Click on a Character to view about that Character</small>
-                        <ul class="list-inline">
-                            <li class="list-inline-item" *ngFor="let character of character.characters">
-                                <!-- <a (click)="goToPage(character.split('/').pop())">Character : {{ character.split('/').pop() }} |</a> -->
-                                <a class="light-blue-text" [routerLink]="['../../characters', character.split('/').pop()]">Character : {{ character.split('/').pop() }} |</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <hr class=" mce-divider">
-                    <div *ngIf="character">
-                        <p class="h5 deep-purple-text">Point Of View Characters :</p>
-                        <small>Click on a Character to view about that Character</small>
-                        <ul class="list-inline">
-                            <li class="list-inline-item" *ngFor="let character of character.povCharacters">
-                                <a class="blue-grey-text" [routerLink]="['../../characters', character.split('/').pop()]">Character : {{ character.split('/').pop() }} |</a>
+                    <div *ngIf="character.allegiances[0]">
+                        <h5 class="h5">Allegiances :</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item" *ngFor="let allegiance of character.allegiances">
+                                <a [routerLink]="['../../houses', allegiance.split('/').pop()]">
+                                    <i class="fa fa-home" aria-hidden="true"></i> House {{ allegiance.split('/').pop() }} </a>
                             </li>
                         </ul>
                     </div>
