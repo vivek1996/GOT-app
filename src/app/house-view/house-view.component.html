@@ -1,1 +1,73 @@
-<p class="text-white"> {{ house | json }} </p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 m-auto" *ngIf="house">
+            <div class="card card-cascade mt-3">
+                <div class="view gradient-card-header green-gradient">
+                    <h2 class="h1-responsive" *ngIf="house.name"> {{house.name}} </h2>
+                    <p *ngIf="house.region"> Region : {{house.region}}</p>
+                    <p *ngIf="house.culture"> Culture : {{house.culture}} </p>
+                    <p *ngIf="house.coatOfArms">Coat Of Arms : {{house.coatOfArms}} </p>
+                    <p *ngIf="house.words" class="font-weight-bold">Words : {{house.words}} </p>
+                    <p *ngIf="house.founded">
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Founded : {{house.founded}}</p>
+                    <p *ngIf="house.diedOut">
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Died Out : {{house.diedOut}}</p>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <div *ngIf="house.titles[0]">
+                            <h5 class="h5">Titles :</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let title of house.titles"> {{title}} </li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <p *ngIf="house.founder" class="m-2">
+                            <i class="fa fa-fire red-text" aria-hidden="true"></i>
+                            <a [routerLink]="['../../characters', house.founder.split('/').pop()]"> Founder : {{house.founder.split('/').pop()}} </a>
+                        </p>
+                        <p *ngIf="house.overlord" class="m-2">
+                            <i class="fa fa-fire red-text" aria-hidden="true"></i>
+                            <a [routerLink]="['../../houses', house.overlord.split('/').pop()]"> Overlord: {{house.overlord.split('/').pop()}} </a>
+                        </p>
+                        <p *ngIf="house.currentLord" class="m-2">
+                            <i class="fa fa-fire red-text" aria-hidden="true"></i>
+                            <a [routerLink]="['../../characters', house.currentLord.split('/').pop()]"> Current Lord : {{house.currentLord.split('/').pop()}} </a>
+                        </p>
+                        <p *ngIf="house.heir" class="m-2">
+                            <i class="fa fa-fire red-text" aria-hidden="true"></i>
+                            <a [routerLink]="['../../characters', house.heir.split('/').pop()]"> Heir : {{house.heir.split('/').pop()}} </a>
+                        </p>
+                        <hr>
+                        <div>
+                            <ul class="list-inline m-2" *ngIf="house.swornMembers[0]">
+                                <h5 class="h5 ">Sworn Members: </h5>
+                                <li class="list-inline-item" *ngFor="let swornMember of house.swornMembers;let first=first;let last=last">
+                                    <a [routerLink]="['../../characters', swornMember.split('/').pop()]">Sworn Member {{ swornMember.split('/').pop() }} {{last ? '' : ' | '}}</a>
+                                </li>
+                            </ul>
+                            <ul class="list-inline m-3" *ngIf="house.cadetBranches[0]">
+                                <h5 class="h5 ">Cadet Branches : </h5>
+                                <li class="list-inline-item" *ngFor="let cadetBranch of house.cadetBranches;let first=first;let last=last">
+                                    <a [routerLink]="['../../houses', cadetBranch.split('/').pop()]">Cadet Branch {{ cadetBranch.split('/').pop() }} {{last ? '' : ' | '}} </a>
+                                </li>
+                            </ul>
+                            <ul class="list-inline m-3" *ngIf="house.ancestralWeapons[0]">
+                                <h5 class="h5 ">Ancestral Weapons : </h5>
+                                <li class="list-inline-item" *ngFor="let ancestralWeapon of house.ancestralWeapons;let first=first;let last=last">
+                                    {{ ancestralWeapon }} {{last ? '' : ' | '}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-danger btn-rounded waves-light" (click)="goBackToPreviousPage()" mdbWavesEffect>Go Back</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
