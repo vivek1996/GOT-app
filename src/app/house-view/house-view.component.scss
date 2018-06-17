@@ -1,0 +1,12 @@
+.green-gradient {
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#0ba360),
+    to(#3cba92)
+  );
+  background: -webkit-linear-gradient(bottom, #0ba360 0%, #3cba92 100%);
+  background: -o-linear-gradient(bottom, #0ba360 0%, #3cba92 100%);
+  background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+}

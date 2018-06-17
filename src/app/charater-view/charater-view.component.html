@@ -1,1 +1,88 @@
-<p class="text-white"> {{ character | json }} </p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 m-auto" *ngIf="character">
+            <div class="card card-cascade mt-3">
+                <div class="view gradient-card-header blue-gradient">
+                    <h2 class="h2-responsive" *ngIf="character.name"> {{character.name}} </h2>
+                    <p>
+                        <i class="fa " [ngClass]="character.gender == 'Male' ? 'fa-male' : 'fa-female'" aria-hidden="true"></i> Gender : {{character.gender}}</p>
+                    <p *ngIf="character.culture"> Culture : {{character.culture}} </p>
+                    <p *ngIf="character.born">
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Born : {{character.born}} </p>
+                    <p *ngIf="character.died">
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Died : {{character.died}} </p>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <div *ngIf="character.titles[0]">
+                            <h5 class="h5">Titles :</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let title of character.titles"> {{title}} </li>
+                            </ul>
+                        </div>
+                        <div *ngIf="character.aliases[0]" class="m-2">
+                            <h5 class="h5">Aliases :</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let aliase of character.aliases"> {{aliase}} </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="list-group">
+                                <li class="list-group-item light-blue-text" *ngIf="character.father">
+                                    <i class="fa fa-male" aria-hidden="true"></i>
+                                    <a [routerLink]="['../../characters', character.father.split('/').pop()]">
+                                        Father</a>
+                                    <!-- <a class="light-blue-text" (click)="goToPage(character.father.split('/').pop())">Father </a> -->
+                                </li>
+                                <li class="list-group-item light-blue-text" *ngIf="character.mother">
+                                    <i class="fa fa-female" aria-hidden="true"></i>
+                                    <a [routerLink]="['../../characters', character.mother.split('/').pop()]">
+                                        Mother</a>
+                                </li>
+                                <li class="list-group-item light-blue-text" *ngIf="character.spouse">
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                    <a [routerLink]="['../../characters', character.spouse.split('/').pop()]">
+                                        Spouse</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="list-inline m-3" *ngIf="character.books[0]">
+                                <h5 class="h5 ">Books : </h5>
+                                <li class="list-inline-item" *ngFor="let book of character.books">
+                                    <a [routerLink]="['../../books', book.split('/').pop()]">Book {{ book.split('/').pop() }} | </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <div *ngIf='character'>
+                        <p class="h5 indigo-text">Characters :</p>
+                        <small>Click on a Character to view about that Character</small>
+                        <ul class="list-inline">
+                            <li class="list-inline-item" *ngFor="let character of character.characters">
+                                <!-- <a (click)="goToPage(character.split('/').pop())">Character : {{ character.split('/').pop() }} |</a> -->
+                                <a class="light-blue-text" [routerLink]="['../../characters', character.split('/').pop()]">Character : {{ character.split('/').pop() }} |</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr class=" mce-divider">
+                    <div *ngIf="character">
+                        <p class="h5 deep-purple-text">Point Of View Characters :</p>
+                        <small>Click on a Character to view about that Character</small>
+                        <ul class="list-inline">
+                            <li class="list-inline-item" *ngFor="let character of character.povCharacters">
+                                <a class="blue-grey-text" [routerLink]="['../../characters', character.split('/').pop()]">Character : {{ character.split('/').pop() }} |</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-danger btn-rounded waves-light" (click)="goBackToPreviousPage()" mdbWavesEffect>Go Back</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GotService } from '../got.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 @Component({
   selector: 'app-charater-view',
@@ -13,6 +13,7 @@ export class CharaterViewComponent implements OnInit {
   constructor(
     private _http: GotService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
   ) {
     this.characterId = this.route.snapshot.paramMap.get('characterId');
@@ -27,6 +28,22 @@ export class CharaterViewComponent implements OnInit {
         console.log(error);
       }
     );
+    this.route.params.subscribe(routeParams => {
+      this.loadDetail(routeParams.characterId);
+    });
+  }
+  public loadDetail(id) {
+    this._http.getSingleCharacter(id).subscribe(
+      data => {
+        this.character = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  public goToPage(id) {
+    this.router.navigate(['/characters', id]);
   }
   public goBackToPreviousPage() {
     this.location.back();
