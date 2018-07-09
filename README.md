@@ -1,27 +1,45 @@
-# GOTApp
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
-
+# GOT App 🎉
+All information about a popular TV Series Game of
+Thrones and its related book series.
+Information is from the [An Api of Ice and Fire](https://anapioficeandfire.com/)
+#  Installation :
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run  `ng serve`  for a dev server. Navigate to  `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Build 🔧
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run  `ng build`  to build the project. The build artifacts will be stored in the  `dist/`  directory. Use the  `--prod`  flag for a production build.
+## Description
+>“An API of Ice And Fire is the world's greatest source for quantified and structured data from the universe of Ice and Fire (and the HBO series Game of Thrones)”
 
-## Build
+The app has 2  views .
+#### Home view :
+The Home view is the homepage and it contains the Books, Characters, Houses. Clicking any of those will navigate to the Specific  view with  respective region .
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+#### Specific Info view :
+This view has the info based on the option selected on the home view. i.e if a Book is selected then the specific view has the information about that book.
+This applies for Characters and house.
 
-## Running unit tests
+ - The book details contains the name, author, publisher , ISBN and
+   characters mentioned in that book . If any of the  character is
+   clicked the details of that character is shown .
+ - The Character view has the details about that character such as Name,
+   played by, gender, books, tv series and House. Clicking on the house
+   gives the details of that house.
+ - The House detail  view has the details as name, region, Coat of arms,
+   words, founded, Sworn Members, and details about the founders.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Options :
 
-## Running end-to-end tests
+>The home view has the option to sort the listed details.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+A toast message is shown for every successful sorting.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## TODO
+
+ - [ ] Add Service Worker
+
+
+ For any other features rise an issue .
