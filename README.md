@@ -1,4 +1,7 @@
 # GOT App 🎉
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/vivek1996/GOT-app.svg)](https://greenkeeper.io/)
+
 All information about a popular TV Series Game of
 Thrones and its related book series.
 Information is from the [An Api of Ice and Fire](https://anapioficeandfire.com/)
